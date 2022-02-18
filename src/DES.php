@@ -5,12 +5,17 @@ namespace Logan\Jiangmen;
 class DES
 {
     /**
-     * @var string $method 加解密方法，可通过 openssl_get_cipher_methods() 获得
+     * 加解密方法
+     * 可通过 openssl_get_cipher_methods() 获得
+     *
+     * @var string
      */
     protected $method;
 
     /**
-     * @var string $key 加解密的密钥
+     * 加解密的密钥
+     *
+     * @var string
      */
     protected $key;
 
@@ -51,8 +56,13 @@ class DES
      * @param string $iv
      * @param int $options
      */
-    public function __construct($key, $method = 'DES-CBC', $output = '', $iv = '', $options = OPENSSL_RAW_DATA | OPENSSL_NO_PADDING)
-    {
+    public function __construct(
+        $key,
+        $method = 'DES-CBC',
+        $output = '',
+        $iv = '',
+        $options = OPENSSL_RAW_DATA | OPENSSL_NO_PADDING
+    ) {
         $this->key     = $key;
         $this->method  = $method;
         $this->output  = $output;
@@ -63,8 +73,11 @@ class DES
     /**
      * 加密
      *
-     * @param $str
+     * @param [type] $str   待加密串
      * @return string
+     * @author LONG <1121116451@qq.com>
+     * @version version
+     * @date 2022-02-18
      */
     public function encrypt($str)
     {
@@ -83,8 +96,11 @@ class DES
     /**
      * 解密
      *
-     * @param $encrypted
-     * @return string
+     * @param [type] $encrypted 待解密串
+     * @return void
+     * @author LONG <1121116451@qq.com>
+     * @version version
+     * @date 2022-02-18
      */
     public function decrypt($encrypted)
     {
