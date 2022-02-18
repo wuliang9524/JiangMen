@@ -8,12 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class WorkerTest extends TestCase
 {
-    // protected $domain = 'http://jiangmen.ktpis.com:8080';
-    // protected $config = [
-    //     'key'   => '58F980CB',
-    //     'token' => '67f40e6cf56bd3411b5d43a3e2511a81',
-    // ];
-
     protected $domain = 'http://apidoc.ktpis.com';
     protected $config = [
         'key'   => 'B176A067',
