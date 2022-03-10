@@ -278,14 +278,14 @@ class Client
      * 班组退场
      *
      * @param string $code  班组编号
-     * @param string $date  退场日期
-     * @param array $attachments    退场图片,有退场日期时，此字段必填。不超过 5 张 800kb 的图片 base64 字符串集合
+     * @param string|null $date  退场日期
+     * @param array|null $attachments    退场图片,有退场日期时，此字段必填。不超过 5 张 800kb 的图片 base64 字符串集合
      * @return void
      * @author LONG <1121116451@qq.com>
      * @version version
      * @date 2022-02-08
      */
-    public function exitGroup(string $code, string $date = '', array $attachments = [])
+    public function exitGroup(string $code, ?string $date, ?array $attachments)
     {
         $url = $this->domain . '/api/Team/Exit';
 
@@ -297,7 +297,7 @@ class Client
             'requestJson' => [
                 'teamNo'          => $code,
                 'exitTime'        => $date,
-                'exitAttachments' => $attachments ?: null
+                'exitAttachments' => $attachments
             ],
         ];
 
