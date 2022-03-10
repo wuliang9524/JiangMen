@@ -411,14 +411,14 @@ class Client
      *
      * @param int $page 指定页号，以0为起始数字，表示第1页
      * @param int $pageSize 每页记录数，默认20。最多不能超过50
-     * @param string $code  班组编号
-     * @param string $idCode    工人身份证号
+     * @param string $code|null  班组编号
+     * @param string $idCode|null    工人身份证号
      * @return void
      * @author LONG <1121116451@qq.com>
      * @version version
      * @date 2022-02-08
      */
-    public function queryProjectWorker(int $page = 0, int $pageSize = 20, string $code = '', string $idCode = '')
+    public function queryProjectWorker(int $page = 0, int $pageSize = 20, ?string $code, ?string $idCode)
     {
         $url = $this->domain . '/api/ProjectWorker/Query';
 
