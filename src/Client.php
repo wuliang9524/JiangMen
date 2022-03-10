@@ -174,13 +174,13 @@ class Client
      * 新增班组
      *
      * @param array $groupInfo
-     * @param array $headMan
+     * @param array|null $headMan
      * @return void
      * @author LONG <1121116451@qq.com>
      * @version version
      * @date 2022-02-08
      */
-    public function addGroup(array $groupInfo, array $headMan = [])
+    public function addGroup(array $groupInfo, ?array $headMan = [])
     {
         $url = $this->domain . '/api/Team/Add';
 
@@ -314,13 +314,13 @@ class Client
      * 查询工人
      *
      * @param string $idCode    工人身份证号码 DES
-     * @param string $code  工人编号。身份证号和编号必填其一，同时填写则默认为身份证号码
+     * @param string|null $code  工人编号。身份证号和编号必填其一，同时填写则默认为身份证号码
      * @return void
      * @author LONG <1121116451@qq.com>
      * @version version
      * @date 2022-02-09
      */
-    public function queryWorkerInfo(string $idCode, string $code = '')
+    public function queryWorkerInfo(string $idCode, ?string $code)
     {
         $url = $this->domain . '/api/Worker/Query';
 
