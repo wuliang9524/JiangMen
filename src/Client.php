@@ -478,15 +478,13 @@ class Client
     /**
      * 修改项目工人
      *
-     * @param array $workerInfo 项目工人基础信息
-     * @param array $contractInfo   项目工人合同信息
-     * @param array $bankCardInfo   项目工人银行卡信息
+     * @param array $requestJson 对应接口文档参数
      * @return void
      * @author LONG <1121116451@qq.com>
      * @version version
      * @date 2022-02-08
      */
-    public function updateProjectWorker(array $workerInfo, array $contractInfo = [], array $bankCardInfo = [])
+    public function updateProjectWorker(array $requestJson)
     {
         $url = $this->domain . '/api/ProjectWorker/Update';
 
@@ -495,7 +493,7 @@ class Client
             'date'        => $this->dateTime,
             'sign'        => $this->sign,
             'serverType'  => $this->serverType,
-            'requestJson' => $workerInfo + ['contractInfo' => $contractInfo ?: NULL] + ['bankCardInfo' => $bankCardInfo ?: NULL],
+            'requestJson' => $requestJson,
         ];
 
         $response = $this->httpClient->request('POST', $url, [
