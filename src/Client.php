@@ -514,13 +514,13 @@ class Client
      * @param string $code  班组编号
      * @param string $idCode    工人身份证号
      * @param string $date  退场日期 格式yyyy-MM-dd
-     * @param string $attachment    退场图片。 不超过 50kb 的图片 base64 字符串。
+     * @param string|null $attachment    退场图片。 不超过 50kb 的图片 base64 字符串。
      * @return void
      * @author LONG <1121116451@qq.com>
      * @version version
      * @date 2022-02-08
      */
-    public function exitProjectWorker(string $code, string $idCode, string $date, string $attachment = '')
+    public function exitProjectWorker(string $code, string $idCode, string $date, ?string $attachment)
     {
         $url = $this->domain . '/api/ProjectWorker/Exit';
 
@@ -533,7 +533,7 @@ class Client
                 'teamNo'          => $code,
                 'identityCode'    => $idCode,
                 'exitTime'        => $date,
-                'exitAttachments' => $attachment ?: NULL,
+                'exitAttachments' => $attachment,
             ],
         ];
 
