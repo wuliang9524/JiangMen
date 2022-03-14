@@ -551,14 +551,14 @@ class Client
      * @param string $date  查询日期。 格式yyyy-MM-dd
      * @param int $page 指定页号，以0为起始数字，表示第1页
      * @param int $pageSize 每页记录数，最多不能超过50
-     * @param string $code  班组编号
-     * @param string $idCode    工人身份证号 DES
+     * @param string|null $code  班组编号
+     * @param string|null $idCode    工人身份证号 DES
      * @return void
      * @author LONG <1121116451@qq.com>
      * @version version
      * @date 2022-02-08
      */
-    public function queryAttendance(string $date, int $page = 0, int $pageSize = 20, string $code = '', string $idCode = '')
+    public function queryAttendance(string $date, int $page = 0, int $pageSize = 20, ?string $code, ?string $idCode)
     {
         $url = $this->domain . '/api/WorkerAttendance/Query';
 
@@ -591,12 +591,12 @@ class Client
      * @param string $idCode    工人身份证号 DES
      * @param bool $isIn    是否为进场
      * @param string $dateTime  工人打卡时间 格式yyyy-MM-dd HH:mm:ss , 不得大于接口请求时间
-     * @param string $imageBase64   刷卡近照。不超过50kb的图片base64字符串
-     * @param string $attendType    通行方式
-     * @param string $channel   通道的名称
-     * @param float $longitude  WGS84经度
-     * @param float $latitude   WGS84纬度
-     * @param string $remark    备注
+     * @param string|null $imageBase64   刷卡近照。不超过50kb的图片base64字符串
+     * @param string|null $attendType    通行方式
+     * @param string|null $channel   通道的名称
+     * @param float|null $longitude  WGS84经度
+     * @param float|null $latitude   WGS84纬度
+     * @param string|null $remark    备注
      * @return void
      * @author LONG <1121116451@qq.com>
      * @version version
@@ -606,12 +606,12 @@ class Client
         string $idCode,
         bool $isIn,
         string $dateTime,
-        string $imageBase64 = '',
-        string $attendType = '',
-        string $channel = '',
-        float $longitude = NULL,
-        float $latitude = NULL,
-        string $remark = ''
+        ?string $imageBase64,
+        ?string $attendType,
+        ?string $channel,
+        ?float $longitude,
+        ?float $latitude,
+        ?string $remark
     ) {
         $url = $this->domain . '/api/WorkerAttendance/Add';
 
@@ -624,12 +624,12 @@ class Client
                 'identityCode' => $idCode,
                 'type'         => $isIn ? 1 : 0,
                 'checkDate'    => $dateTime,
-                'image'        => $imageBase64 ?: NULL,
+                'image'        => $imageBase64,
                 'attendType'   => $attendType ?: '011', // 011->其他方式
-                'channel'      => $channel ?: NULL,
+                'channel'      => $channel,
                 'lng'          => $longitude,
                 'lat'          => $latitude,
-                'other'        => $remark ?: NULL,
+                'other'        => $remark,
             ],
         ];
         if ($longitude === NULL) unset($req['requestJson']['lng']);
