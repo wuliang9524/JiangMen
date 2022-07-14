@@ -147,7 +147,7 @@ class Client
      * @version version
      * @date 2022-02-08
      */
-    public function queryGroup(string $code)
+    public function queryGroup(?string $code)
     {
         $url = $this->domain . '/api/Team/Query';
 
